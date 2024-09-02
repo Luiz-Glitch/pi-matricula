@@ -17,3 +17,7 @@ def cadastro_aluno(request):
     }
 
     return render(request, 'cadastro_aluno.html', context)
+
+def lista_alunos(request):
+    alunos = Aluno.objects.all()
+    return render(request, 'lista_alunos.html', {'alunos': alunos})
