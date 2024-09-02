@@ -5,7 +5,7 @@ class Aluno(models.Model):
     CURSO_CHOICES = (
         ('INFORMATICA', 'Informática'),
         ('ALIMENTOS', 'Alimentos'),
-        ('APICULTURA', 'APICULTURA'),
+        ('APICULTURA', 'Apicutura   '),
     )
     
     nome = models.CharField(max_length=255)
