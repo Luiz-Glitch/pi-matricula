@@ -44,9 +44,14 @@
                 {{ form.curso.label_tag }}
                 {{ form.curso }}
             </div>
-            <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Salvar Alterações
-                {% else %}Cadastrar{% endif %}</button>
+            <button type="submit" class="btn btn-primary">
+                {% if form.instance.pk %}Salvar Alterações
+                {% else %}Cadastrar{% endif %}
+            </button>
         </form>
+        {% if form.instance.pk %}
+        <a href="{% url 'deletar_aluno' form.instance.pk %}" class="btn btn-danger mt-3">Deletar Aluno</a>
+        {% endif %}
     </div>
 </body>
 

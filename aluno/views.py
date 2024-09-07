@@ -37,3 +37,15 @@ def editar_aluno(request, id):
         'form': form,
     }
     return render(request, 'form_aluno.html', context)
+
+def deletar_aluno(request, id):
+    aluno = get_object_or_404(Aluno, id=id)
+    if request.method == 'POST':
+        aluno.delete()
+        return redirect('lista_alunos')
+    
+    context = {
+        'aluno': aluno,
+    }
+
+    return render(request, 'confirm_delete.html', context)
