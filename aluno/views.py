@@ -4,11 +4,16 @@ from .models import Aluno
 from .forms import AlunoForm
 
 # Create your views here.
-def cadastro_aluno(request):
+def lista_alunos(request):
+    alunos = Aluno.objects.all()
+    return render(request, 'lista_alunos.html', {'alunos': alunos})
+
+def cadastrar_aluno(request):
     if request.method == 'POST':
         form = AlunoForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('lista_alunos')
     else:
         form = AlunoForm()
     
@@ -16,11 +21,7 @@ def cadastro_aluno(request):
         'form': form,
     }
 
-    return render(request, 'cadastro_aluno.html', context)
-
-def lista_alunos(request):
-    alunos = Aluno.objects.all()
-    return render(request, 'lista_alunos.html', {'alunos': alunos})
+    return render(request, 'form_aluno.html', context)
 
 def editar_aluno(request, id):
     aluno = get_object_or_404(Aluno, id=id)
@@ -35,4 +36,4 @@ def editar_aluno(request, id):
     context = {
         'form': form,
     }
-    return render(request, 'cadastro_aluno.html', context)
+    return render(request, 'form_aluno.html', context)

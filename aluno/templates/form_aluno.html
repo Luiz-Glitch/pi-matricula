@@ -17,7 +17,7 @@
 
         <h1 class="mb-4">{% if form.instance.pk %}Editar Aluno{% else %}Cadastrar Aluno{% endif %}</h1>
         <form
-            action="{% if form.instance.pk %}{% url 'editar_aluno' form.instance.pk %}{% else %}{% url 'cadastro_aluno' %}{% endif %}"
+            action="{% if form.instance.pk %}{% url 'editar_aluno' form.instance.pk %}{% else %}{% url 'cadastrar_aluno' %}{% endif %}"
             method="post">
             {% csrf_token %}
             <div class="mb-3">
